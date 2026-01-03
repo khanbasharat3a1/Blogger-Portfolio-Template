@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='indie' b:templateVersion='1.3.0' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='indie' b:templateVersion='1.3.0' expr:dir='data:blog.languageDirection' lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
   <meta charset='UTF-8'/>
   <meta content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0' name='viewport'/>
-  <title><data:blog.pageTitle/></title>
+  
+  <b:if cond='data:view.isHomepage'>
+    <title>Basharat Ahmad Khan | AI Specialist &amp; Electronics Engineer | Khan Basharat</title>
+  <b:else/>
+    <title><data:blog.pageName/> - Basharat Ahmad Khan</title>
+  </b:if>
+
+  <b:if cond='data:view.isHomepage'>
+    <meta content='Official portfolio of Basharat Ahmad Khan (Khan Basharat). Electronics &amp; Communication Engineer, AI Specialist, and Founder of Tech Insider Plus. Based in Tangmarg, Baramulla, Kashmir. Expert in Python, IoT, and Industrial Automation.' name='description'/>
+    <meta content='khan basharat, Basharat ahmad khan, Basharat Ahmad Khan Duli, khanbasharat3a1, Tech Insider Plus, Atomic North, Electronics Engineer Kashmir, AI Specialist, Python Developer' name='keywords'/>
+  <b:else/>
+    <meta expr:content='data:blog.metaDescription' name='description'/>
+  </b:if>
+
+  <meta content='Basharat Ahmad Khan | Portfolio' property='og:title'/>
+  <meta content='website' property='og:type'/>
+  <meta expr:content='data:blog.homepageUrl' property='og:url'/>
+  <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgywnMiFgYhmqAJxZMT3fMZfZi9uEjREjQN-daJZnlw-3uK8unesfIBRGFHfsW0OgJaCyfxdGaFF2e6fBWy2-MQzuvoOTe6jrTimTq4aZUftjhPLhz_u1wZEuhXlUIkWhehU9-w9k0dlUywrnbSORUMowI3T3rPes5hU0SNJ2-5MuUXWwDH9c1rhyIb9-g/s960/cropped_circle_image%20(1).png' property='og:image'/>
+  <meta content='Electronics Engineer, AI Specialist, and Founder of Tech Insider Plus. Discover my projects and experience.' property='og:description'/>
+  
   <b:include data='blog' name='all-head-content'/>
+
+  <script type='application/ld+json'>
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Basharat Ahmad Khan",
+    "alternateName": ["Khan Basharat", "Basharat Ahmad Khan Duli", "khanbasharat3a1"],
+    "url": "<data:blog.homepageUrl/>",
+    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgywnMiFgYhmqAJxZMT3fMZfZi9uEjREjQN-daJZnlw-3uK8unesfIBRGFHfsW0OgJaCyfxdGaFF2e6fBWy2-MQzuvoOTe6jrTimTq4aZUftjhPLhz_u1wZEuhXlUIkWhehU9-w9k0dlUywrnbSORUMowI3T3rPes5hU0SNJ2-5MuUXWwDH9c1rhyIb9-g/s960/cropped_circle_image%20(1).png",
+    "jobTitle": ["Technical Support Trainee", "Electronics Engineer", "Founder"],
+    "worksFor": [
+      {
+        "@type": "Organization",
+        "name": "Atomic North"
+      },
+      {
+        "@type": "Organization",
+        "name": "Tech Insider Plus"
+      }
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Model Institute of Engineering and Technology"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tangmarg, Baramulla",
+      "addressRegion": "Jammu and Kashmir",
+      "addressCountry": "India"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/khanbasharat",
+      "https://github.com/khanbasharat",
+      "https://www.khanbasharat.com/"
+    ]
+  }
+  </script>
 
   <link href='https://fonts.googleapis.com' rel='preconnect'/>
   <link crossorigin='crossorigin' href='https://fonts.gstatic.com' rel='preconnect'/>
@@ -85,13 +141,27 @@
     }
     nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
     
-    /* Logo Styling */
-    .logo { display: flex; align-items: center; }
+    /* Logo Styling - Updated for Image + Text */
+    .logo { 
+      display: flex; 
+      align-items: center; 
+      text-decoration: none;
+    }
     .logo img { 
       height: 45px; width: 45px; 
       border-radius: 50%; 
       border: 2px solid var(--primary);
       object-fit: cover;
+      margin-right: 12px;
+    }
+    .logo-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin: 0;
     }
 
     .nav-links { display: flex; gap: 30px; list-style: none; }
@@ -115,6 +185,7 @@
 
     /* --- HERO --- */
     .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; }
+    /* Hero H1 is distinct from Logo H1 */
     .hero h1 { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 24px; letter-spacing: -2px; }
     .hero-pre { font-family: var(--font-code); color: var(--accent); margin-bottom: 10px; display: block; letter-spacing: 2px; }
     .typewrite-wrapper { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 30px; font-family: var(--font-code); }
@@ -127,7 +198,6 @@
     .social-links a:hover { color: var(--primary); transform: translateY(-3px); }
 
     /* --- CARDS & GRID --- */
-    /* ADJUSTED: Changed minmax from 400px to 300px to prevent mobile cutout */
     .grid { display: grid; gap: 30px; }
     .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
     .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
@@ -230,12 +300,12 @@
       .nav-links li { margin: 15px 0; }
       .nav-link { font-size: 1.2rem; }
 
+      .logo-text { font-size: 1.1rem; } /* Slightly smaller text on mobile */
       .hero h1 { font-size: 3rem; }
       
       .timeline { padding-left: 20px; margin-left: 0; border-left: 2px solid var(--border); }
       .timeline-dot { display: none; }
       
-      /* FIX SYMMETRY AND PADDING ON MOBILE */
       .grid-2, .grid-3 { grid-template-columns: 1fr; } 
       .container { padding: 0 20px; }
       .section-title { font-size: 2rem; }
@@ -250,7 +320,12 @@
     <div class='container'>
       <nav>
         <a class='logo' expr:href='data:blog.homepageUrl'>
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgywnMiFgYhmqAJxZMT3fMZfZi9uEjREjQN-daJZnlw-3uK8unesfIBRGFHfsW0OgJaCyfxdGaFF2e6fBWy2-MQzuvoOTe6jrTimTq4aZUftjhPLhz_u1wZEuhXlUIkWhehU9-w9k0dlUywrnbSORUMowI3T3rPes5hU0SNJ2-5MuUXWwDH9c1rhyIb9-g/s960/cropped_circle_image%20(1).png" alt="Basharat Khan"/>
+          <img alt='Khan Basharat - Basharat Ahmad Khan Duli' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgywnMiFgYhmqAJxZMT3fMZfZi9uEjREjQN-daJZnlw-3uK8unesfIBRGFHfsW0OgJaCyfxdGaFF2e6fBWy2-MQzuvoOTe6jrTimTq4aZUftjhPLhz_u1wZEuhXlUIkWhehU9-w9k0dlUywrnbSORUMowI3T3rPes5hU0SNJ2-5MuUXWwDH9c1rhyIb9-g/s960/cropped_circle_image%20(1).png'/>
+          <b:if cond='data:view.isHomepage'>
+            <h1 class='logo-text'>Khan Basharat</h1>
+          <b:else/>
+            <span class='logo-text'>Khan Basharat</span>
+          </b:if>
         </a>
         
         <div class="hamburger">
@@ -286,13 +361,13 @@
           &gt; <span class='typewrite-text'></span>
         </div>
         <p class='hero-bio'>
-          Electronics &amp; Communication Engineer specialized in AI/ML. I build intelligent systems that bridge the gap between industrial hardware (PLC/IoT) and modern software.
+          Electronics &amp; Communication Engineer (B.Tech) and AI Specialist from <strong>Tangmarg, Baramulla, Kashmir</strong>. I build intelligent systems that bridge the gap between industrial hardware (PLC/IoT) and modern software. Founder of Tech Insider Plus.
         </p>
         <div class='social-links'>
-          <a href='https://github.com/khanbasharat' target='_blank'><i class="fab fa-github"></i></a>
-          <a href='https://linkedin.com/in/khanbasharat' target='_blank'><i class="fab fa-linkedin"></i></a>
-          <a href='mailto:khanbasharat3a1@gmail.com'><i class="fas fa-envelope"></i></a>
-          <a href='https://www.khanbasharat.com/' target='_blank'><i class="fas fa-globe"></i></a>
+          <a aria-label='GitHub' href='https://github.com/khanbasharat' target='_blank'><i class="fab fa-github"></i></a>
+          <a aria-label='LinkedIn' href='https://linkedin.com/in/khanbasharat' target='_blank'><i class="fab fa-linkedin"></i></a>
+          <a aria-label='Email' href='mailto:khanbasharat3a1@gmail.com'><i class="fas fa-envelope"></i></a>
+          <a aria-label='Website' href='https://www.khanbasharat.com/' target='_blank'><i class="fas fa-globe"></i></a>
         </div>
         <a class='btn-action' href='#projects'>View My Work</a>
       </div>
@@ -370,7 +445,7 @@
           <div class='timeline-item'>
             <div class='timeline-dot'></div>
             <span class='timeline-date'>Nov 2021 - Nov 2025</span>
-            <h3>Bachelor of Engineering (B.E.)</h3>
+            <h3>Bachelor of Technology (B.Tech)</h3>
             <div class='timeline-place'>Model Institute of Engineering and Technology</div>
             <ul>
               <li>Electronics and Communications Engineering</li>
@@ -624,7 +699,7 @@
                    <div class='card' style='display:flex; flex-direction:column;'>
                      <b:if cond='data:post.featuredImage'>
                        <div style='height:200px; margin:-30px -30px 20px -30px;'>
-                         <img expr:src='data:post.featuredImage' style='width:100%; height:100%; object-fit:cover;'/>
+                         <img expr:alt='data:post.title' expr:src='data:post.featuredImage' style='width:100%; height:100%; object-fit:cover;'/>
                        </div>
                      </b:if>
                      <div style='font-family:var(--font-code); color:var(--accent); font-size:0.8rem; margin-bottom:10px;'>
@@ -751,7 +826,7 @@
   <footer>
     <div class='container'>
       <p style='color:var(--text-muted); font-size:0.9rem;'>
-        &amp;copy; 2026 Basharat Ahmad Khan. Designed with <span style='color:var(--primary);'>&amp;hearts;</span> in Kashmir.
+        &amp;copy; 2026 Basharat Ahmad Khan (Khan Basharat). Designed with <span style='color:var(--primary);'>&amp;hearts;</span> in Kashmir (Tangmarg, Baramulla).
       </p>
     </div>
   </footer>
